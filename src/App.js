@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Button from 'react-bootstrap/Button';
 import Homeview from './components/Homeview';
+import Bookview from './components/Bookview';
 
 function App() {
   return (
@@ -9,7 +9,8 @@ function App() {
     	<BrowserRouter>
       		<Routes>
         		<Route path="/" element={<Homeview/>}/>
-        		<Route path="/book" element={<Button variant="primary">Button as link</Button>}/>
+        		<Route path="/book/:type" element={<Bookview/>}/>
+        		<Route path="/form/:hour" element={<div>Reservation</div>}/>
       		</Routes>
       	</BrowserRouter>
     </div>

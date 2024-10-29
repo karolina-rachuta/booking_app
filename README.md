@@ -6,6 +6,7 @@
 - Formik (formularz)
 - React Bootstrap
 - JSON server (do zabawy, nie do produkcji)
+- convert dates
 
 ### Setup / boilerplate
 
@@ -131,3 +132,8 @@ or
 - endpoints w liczbie mnogiej
 - pobieranie i zapisywanie danych na backend serverze
 - CRUD - get, post, put/patch, delete
+
+3. Current date (today)
+```ja
+const currentDate = newDate().toJSON().slice(0, 10); // 29/10/2024
+```
