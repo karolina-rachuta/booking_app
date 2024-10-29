@@ -111,6 +111,12 @@ or
 }
 ```
 
+- canceled visit: confirmation false
+
+```json
+ "confirmation": false
+```
+
 ## Notatki
 
 1. Dodawanie zmiennych środowiskowych do scirpts
