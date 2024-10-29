@@ -80,9 +80,10 @@ function App() {
 }
 ```
 
-## JSON server
+## JSON server (was created databases for visits)
 
 - choose endpoint, tablica obiektów, w każdym obiekcie zawsze id
+- json type data: "2012-04-23T18:25:43.511Z"
 
 ```json
 {
