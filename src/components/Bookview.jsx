@@ -83,7 +83,7 @@ function Bookview() {
             {visit.avaiableHours
               .filter((hour) => parseInt(hour) < 12)
               .map((hour) => (
-                <Link to={`/form/${params.type}`} className="mr-2">
+                <Link to={`/form/${params.type}`} state={{ params: `${params.type}` }} className="mr-2">
                     <Button className="me-2" variant="outline-secondary">{hour}</Button>
                 </Link>
               ))}
@@ -94,7 +94,7 @@ function Bookview() {
             {visit.avaiableHours
               .filter((hour) => parseInt(hour) >= 12 && parseInt(hour) < 16)
               .map((hour) => (
-                <Link to={`/form/${params.type}`} className="mr-2">
+                <Link to={`/form/${params.type}`} state={{ params: `${params.type}` }} className="mr-2">
                     <Button className="me-2" variant="outline-secondary">{hour}</Button>
                 </Link>
               ))}
@@ -105,7 +105,7 @@ function Bookview() {
             {visit.avaiableHours
               .filter((hour) => parseInt(hour) >= 16)
               .map((hour) => (
-                <Link to={`/form/${params.type}`}>
+                <Link to={`/form/${params.type}`} state={{ params: `${params.type}` }}>
                     <Button className="me-2" variant="outline-secondary">
                   {hour}
                     </Button>

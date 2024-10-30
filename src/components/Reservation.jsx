@@ -1,5 +1,5 @@
-import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -12,7 +12,9 @@ import FormCheck from "react-bootstrap/FormCheck";
 import Button from "react-bootstrap/Button";
 
 function Reservation() {
-    const params = useParams();
+  let { state} = useLocation();
+  console.log(state.params);
+
   return (
     <Container>
       <Row xs={12}>
@@ -64,8 +66,8 @@ function Reservation() {
 
             <Row xs={12}>
               <Col>
-                <Link to="/book/:type">
-                  <Button variant="primary" type="submit">
+                <Link to={`/book/${state.params}`}>
+                  <Button variant="outline-secondary" type="submit">
                     &lt; Previous
                   </Button>
                 </Link>
