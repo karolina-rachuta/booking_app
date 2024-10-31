@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -13,17 +13,29 @@ import Button from "react-bootstrap/Button";
 
 //missing validation of inputs
 //19 linijka pokazuje sie przy kazdej literce w input
+//patch- update ktoras literowke
 
 function Reservation() {
   let { state } = useLocation();
+  console.log(state);
   const navigate = useNavigate();
   console.log(state);
   const [formData, setFormData] = useState({
-    fullname: "",
-    email: "",
-    phoneNumber: "",
+    fullname: state?.formData?.fullname || "",
+    email: state?.formData?.email || "",
+    phoneNumber: state?.formData?.phoneNumber || "",
     acceptedTerms: false,
   });
+
+  useEffect(() => {
+    if (state?.formData) {
+      setFormData((prevData) => ({
+        ...prevData,
+        ...state.formData,
+      }));
+      //wywolac patcha?
+    }
+  }, [state]);
 
   async function addDataToDatabase(newReservation) {
     const request = await fetch("http://localhost:3004/reservations", {
@@ -43,15 +55,29 @@ function Reservation() {
     const newInputData = type === "checkbox" ? checked : value;
     setFormData({
       ...formData,
-      [name]: newInputData
+      [name]: newInputData,
     });
   }
 
   async function handleFormSubmit(e) {
     e.preventDefault();
-    const online = state.params === 'online' ? true : false;
-    const newReservation = { ...formData, visitDate: `${state.date}T${state.time}`, online: online, confirmation: false};
+    const online = state.params === "online" ? true : false;
+    const newReservation = {
+      ...formData,
+      visitDate: `${state.date}T${state.time}`,
+      online: online,
+      confirmation: false,
+    };
     console.log("newReservation", newReservation);
+    if (
+      !formData.fullname ||
+      !formData.email ||
+      !formData.phoneNumber ||
+      !formData.acceptedTerms
+    ) {
+      alert("Please fill in all the required fields.");
+      return;
+    }
 
     try {
       const data = await addDataToDatabase(newReservation);
@@ -142,9 +168,9 @@ function Reservation() {
               </Col>
 
               <Col className="text-end">
-                  <Button variant="primary" type="submit">
-                    Next &gt;
-                  </Button>
+                <Button variant="primary" type="submit">
+                  Next &gt;
+                </Button>
               </Col>
             </Row>
           </Form>

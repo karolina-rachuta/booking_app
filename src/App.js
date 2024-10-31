@@ -4,6 +4,7 @@ import Homeview from './components/Homeview';
 import Bookview from './components/Bookview';
 import Reservation from './components/Reservation';
 import Confirmation from './components/Confirmation';
+import ThankYou from './components/ThankYou';
 
 function App() {
   return (
@@ -12,8 +13,9 @@ function App() {
       		<Routes>
         		<Route path="/" element={<Homeview/>}/>
         		<Route path="/book/:type" element={<Bookview/>}/>
-        		<Route path="/form/:hour" element={<Reservation/>}/>
+        		<Route path="/form/:type/:id" element={<Reservation/>}/>
         		<Route path="/confirmation/:id" element={<Confirmation/>}/>
+        		<Route path="/thankyou" element={<ThankYou/>}/>
       		</Routes>
       	</BrowserRouter>
     </div>

@@ -105,7 +105,7 @@ function Bookview() {
             {visit.avaiableHours
               .filter((hour) => parseInt(hour) >= 16)
               .map((hour) => (
-                <Link to={`/form/${params.type}`} state={{ params: `${params.type}`, date: visit.data, time: hour }}>
+                <Link to={`/form/${params.type}/new`} state={{ params: `${params.type}`, date: visit.data, time: hour }}>
                     <Button className="me-2" variant="outline-secondary">
                   {hour}
                     </Button>

@@ -7,6 +7,7 @@
 - React Bootstrap
 - JSON server (do zabawy, nie do produkcji)
 - convert dates
+- CRUD
 
 ### Setup / boilerplate
 
