@@ -13,7 +13,7 @@ function App() {
         		<Route path="/" element={<Homeview/>}/>
         		<Route path="/book/:type" element={<Bookview/>}/>
         		<Route path="/form/:hour" element={<Reservation/>}/>
-        		<Route path="/confirmation" element={<Confirmation/>}/>
+        		<Route path="/confirmation/:id" element={<Confirmation/>}/>
       		</Routes>
       	</BrowserRouter>
     </div>

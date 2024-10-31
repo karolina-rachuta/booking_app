@@ -11,6 +11,9 @@ import FormText from "react-bootstrap/FormText";
 import FormCheck from "react-bootstrap/FormCheck";
 import Button from "react-bootstrap/Button";
 
+//missing validation of inputs
+//19 linijka pokazuje sie przy kazdej literce w input
+
 function Reservation() {
   let { state } = useLocation();
   const navigate = useNavigate();
@@ -18,7 +21,7 @@ function Reservation() {
   const [formData, setFormData] = useState({
     fullname: "",
     email: "",
-    phone: "",
+    phoneNumber: "",
     acceptedTerms: false,
   });
 
@@ -51,8 +54,9 @@ function Reservation() {
     console.log("newReservation", newReservation);
 
     try {
-      await addDataToDatabase(newReservation);
-      navigate("/confirmation");
+      const data = await addDataToDatabase(newReservation);
+      console.log(data.id);
+      navigate(`/confirmation/${data.id}`);
     } catch (error) {
       console.error("Error adding reservation:", error);
     }
@@ -97,14 +101,14 @@ function Reservation() {
               />
             </FormGroup>
 
-            <FormGroup className="mb-3" controlId="phone">
+            <FormGroup className="mb-3" controlId="phoneNumber">
               <FormLabel>
                 Phone number<sup>*</sup>
               </FormLabel>
               <FormControl
                 type="tel"
-                name="phone"
-                value={formData.phone}
+                name="phoneNumber"
+                value={formData.phoneNumber}
                 onChange={handleChange}
                 required
               />
@@ -115,7 +119,7 @@ function Reservation() {
                 xs={3}
                 type="checkbox"
                 name="acceptedTerms"
-                value={formData.acceptedTerms}
+                checked={formData.acceptedTerms}
                 onChange={handleChange}
                 label="By booking a visit, I confirm that I accept the terms and conditions."
                 required
