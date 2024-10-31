@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Homeview from './components/Homeview';
 import Bookview from './components/Bookview';
 import Reservation from './components/Reservation';
+import Confirmation from './components/Confirmation';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         		<Route path="/" element={<Homeview/>}/>
         		<Route path="/book/:type" element={<Bookview/>}/>
         		<Route path="/form/:hour" element={<Reservation/>}/>
+        		<Route path="/confirmation" element={<Confirmation/>}/>
       		</Routes>
       	</BrowserRouter>
     </div>

@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+import { useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -12,8 +12,51 @@ import FormCheck from "react-bootstrap/FormCheck";
 import Button from "react-bootstrap/Button";
 
 function Reservation() {
-  let { state} = useLocation();
-  console.log(state.params);
+  let { state } = useLocation();
+  const navigate = useNavigate();
+  console.log(state);
+  const [formData, setFormData] = useState({
+    fullname: "",
+    email: "",
+    phone: "",
+    acceptedTerms: false,
+  });
+
+  async function addDataToDatabase(newReservation) {
+    const request = await fetch("http://localhost:3004/reservations", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newReservation),
+    });
+    const data = await request.json();
+    console.log(data);
+    return data;
+  }
+
+  function handleChange(e) {
+    const { value, name, checked, type } = e.target;
+    const newInputData = type === "checkbox" ? checked : value;
+    setFormData({
+      ...formData,
+      [name]: newInputData
+    });
+  }
+
+  async function handleFormSubmit(e) {
+    e.preventDefault();
+    const online = state.params === 'online' ? true : false;
+    const newReservation = { ...formData, visitDate: `${state.date}T${state.time}`, online: online, confirmation: false};
+    console.log("newReservation", newReservation);
+
+    try {
+      await addDataToDatabase(newReservation);
+      navigate("/confirmation");
+    } catch (error) {
+      console.error("Error adding reservation:", error);
+    }
+  }
 
   return (
     <Container>
@@ -24,7 +67,7 @@ function Reservation() {
       </Row>
       <Row xs={12}>
         <Col>
-          <Form action="">
+          <Form onSubmit={handleFormSubmit}>
             <FormGroup className="mb-3">
               <FormText>Fill in the details</FormText>
             </FormGroup>
@@ -32,27 +75,48 @@ function Reservation() {
               <FormLabel>
                 Full Name<sup>*</sup>
               </FormLabel>
-              <FormControl type="text" required />
+              <FormControl
+                type="text"
+                name="fullname"
+                required
+                value={formData.fullname}
+                onChange={handleChange}
+              />
             </FormGroup>
 
             <FormGroup className="mb-3" controlId="email">
               <FormLabel>
                 Email<sup>*</sup>
               </FormLabel>
-              <FormControl type="email" required />
+              <FormControl
+                type="email"
+                name="email"
+                required
+                value={formData.email}
+                onChange={handleChange}
+              />
             </FormGroup>
 
             <FormGroup className="mb-3" controlId="phone">
               <FormLabel>
                 Phone number<sup>*</sup>
               </FormLabel>
-              <FormControl type="tel" required />
+              <FormControl
+                type="tel"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
+                required
+              />
             </FormGroup>
 
             <FormGroup className="mb-3">
               <FormCheck
                 xs={3}
                 type="checkbox"
+                name="acceptedTerms"
+                value={formData.acceptedTerms}
+                onChange={handleChange}
                 label="By booking a visit, I confirm that I accept the terms and conditions."
                 required
               />
@@ -67,18 +131,16 @@ function Reservation() {
             <Row xs={12}>
               <Col>
                 <Link to={`/book/${state.params}`}>
-                  <Button variant="outline-secondary" type="submit">
+                  <Button variant="outline-secondary" type="button">
                     &lt; Previous
                   </Button>
                 </Link>
               </Col>
 
               <Col className="text-end">
-                <Link to="/confirmation">
                   <Button variant="primary" type="submit">
                     Next &gt;
                   </Button>
-                </Link>
               </Col>
             </Row>
           </Form>

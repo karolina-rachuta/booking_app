@@ -64,7 +64,7 @@ function Bookview() {
         (new Date(visit.data)) > (new Date(startDate))
       ))
       .map((visit) => (
-        <Row key={visit.date}>
+        <Row key={visit.id}>
           <Col
             className="mb-3"
             style={{
@@ -75,7 +75,7 @@ function Bookview() {
             }}
             xs={12}
           >
-            {convertDay(visit.data)}, {visit.data}fdcve4r
+            {convertDay(visit.data)}, {visit.data}
           </Col>
 
           <Col className="mb-2" xs={12}>
@@ -83,7 +83,7 @@ function Bookview() {
             {visit.avaiableHours
               .filter((hour) => parseInt(hour) < 12)
               .map((hour) => (
-                <Link to={`/form/${params.type}`} state={{ params: `${params.type}` }} className="mr-2">
+                <Link to={`/form/${params.type}`} state={{ params: `${params.type}`, date: visit.data, time: hour }} className="mr-2">
                     <Button className="me-2" variant="outline-secondary">{hour}</Button>
                 </Link>
               ))}
@@ -94,7 +94,7 @@ function Bookview() {
             {visit.avaiableHours
               .filter((hour) => parseInt(hour) >= 12 && parseInt(hour) < 16)
               .map((hour) => (
-                <Link to={`/form/${params.type}`} state={{ params: `${params.type}` }} className="mr-2">
+                <Link to={`/form/${params.type}`} state={{ params: `${params.type}`, date: visit.data, time: hour }} className="mr-2">
                     <Button className="me-2" variant="outline-secondary">{hour}</Button>
                 </Link>
               ))}
@@ -105,7 +105,7 @@ function Bookview() {
             {visit.avaiableHours
               .filter((hour) => parseInt(hour) >= 16)
               .map((hour) => (
-                <Link to={`/form/${params.type}`} state={{ params: `${params.type}` }}>
+                <Link to={`/form/${params.type}`} state={{ params: `${params.type}`, date: visit.data, time: hour }}>
                     <Button className="me-2" variant="outline-secondary">
                   {hour}
                     </Button>

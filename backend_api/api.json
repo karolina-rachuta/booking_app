@@ -1,60 +1,112 @@
 {
   "visits": [
     {
-      "id": 1,
+      "id": "1",
       "data": "2024-11-25",
-      "avaiableHours": ["11:00", "15:00", "16:00", "17:00"]
+      "avaiableHours": [
+        "11:00",
+        "15:00",
+        "16:00",
+        "17:00"
+      ]
     },
     {
-      "id": 2,
+      "id": "2",
       "data": "2024-11-26",
-      "avaiableHours": ["15:00", "16:00", "17:00", "20:00"]
+      "avaiableHours": [
+        "15:00",
+        "16:00",
+        "17:00",
+        "20:00"
+      ]
     },
     {
-      "id": 3,
+      "id": "3",
       "data": "2024-11-27",
-      "avaiableHours": ["15:00", "16:00", "17:00"]
+      "avaiableHours": [
+        "15:00",
+        "16:00",
+        "17:00"
+      ]
     },
     {
-      "id": 4,
+      "id": "4",
       "data": "2024-11-28",
-      "avaiableHours": ["11:00", "15:00", "16:00", "17:00"]
+      "avaiableHours": [
+        "11:00",
+        "15:00",
+        "16:00",
+        "17:00"
+      ]
     },
     {
-      "id": 5,
+      "id": "5",
       "data": "2024-11-29",
-      "avaiableHours": ["15:00", "16:00", "17:00", "20:00"]
+      "avaiableHours": [
+        "15:00",
+        "16:00",
+        "17:00",
+        "20:00"
+      ]
     },
     {
-      "id": 6,
+      "id": "6",
       "data": "2024-11-30",
-      "avaiableHours": ["15:00", "16:00", "17:00"]
+      "avaiableHours": [
+        "15:00",
+        "16:00",
+        "17:00"
+      ]
     },
     {
-      "id": 7,
+      "id": "7",
       "data": "2024-12-02",
-      "avaiableHours": ["11:00", "15:00", "16:00", "17:00"]
+      "avaiableHours": [
+        "11:00",
+        "15:00",
+        "16:00",
+        "17:00"
+      ]
     },
     {
-      "id": 8,
+      "id": "8",
       "data": "2024-12-03",
-      "avaiableHours": ["15:00", "16:00", "17:00", "20:00"]
+      "avaiableHours": [
+        "15:00",
+        "16:00",
+        "17:00",
+        "20:00"
+      ]
     },
     {
-      "id": 9,
+      "id": "9",
       "data": "2024-12-04",
-      "avaiableHours": ["15:00", "16:00", "17:00"]
+      "avaiableHours": [
+        "15:00",
+        "16:00",
+        "17:00"
+      ]
     }
   ],
-  "reservations": [{
-    "id": 1,
-    "fullName": "Ryszard Kalisz",
-    "email": "ryszard.kalisz@op.pl",
-    "phoneNumber": 123432343,
-    "visitDate": "2024-10-10T15:00",
-    "online": false,
-    "confirmation": false
-
-  }
-]
+  "reservations": [
+    {
+      "id": "1",
+      "fullName": "Ryszard Kalisz",
+      "email": "ryszard.kalisz@op.pl",
+      "phoneNumber": 123432343,
+      "visitDate": "2024-10-10T15:00",
+      "online": false,
+      "confirmation": false
+    },
+    {
+      "id": "d79d",
+      "fullname": "wrona wrona",
+      "email": "wrona@op.pl",
+      "phone": "1234323",
+      "acceptedTerms": true,
+      "visitDate": "2024-11-25T15:00",
+      "online": false,
+      "confirmation": false
+    }
+  ]
 }
