@@ -277,6 +277,36 @@
       "visitDate": "2024-11-25T17:00",
       "online": true,
       "confirmation": true
+    },
+    {
+      "id": "7b87",
+      "fullname": "Anna Nowak",
+      "email": "anna.nowak@op.pl",
+      "phoneNumber": "0585553312",
+      "acceptedTerms": true,
+      "visitDate": "2024-11-25T17:00",
+      "online": false,
+      "confirmation": true
+    },
+    {
+      "id": "cbd8",
+      "fullname": "Anne Smith",
+      "email": "anne.smith@gmail.com",
+      "phoneNumber": "0585331418",
+      "acceptedTerms": true,
+      "visitDate": "2024-11-25T17:00",
+      "online": true,
+      "confirmation": true
+    },
+    {
+      "id": "cbd8",
+      "fullname": "Anne Smith",
+      "email": "anne.smith@gmail.com",
+      "phoneNumber": "0585331418",
+      "acceptedTerms": true,
+      "visitDate": "undefinedTundefined",
+      "online": false,
+      "confirmation": false
     }
   ]
 }

@@ -11,10 +11,6 @@ import FormText from "react-bootstrap/FormText";
 import FormCheck from "react-bootstrap/FormCheck";
 import Button from "react-bootstrap/Button";
 
-//missing validation of inputs
-//19 linijka pokazuje sie przy kazdej literce w input
-//patch- update ktoras literowke
-
 function Reservation() {
   let { state } = useLocation();
   console.log(state);
@@ -33,7 +29,6 @@ function Reservation() {
         ...prevData,
         ...state.formData,
       }));
-      //wywolac patcha?
     }
   }, [state]);
 
@@ -92,7 +87,7 @@ function Reservation() {
     <Container>
       <Row xs={12}>
         <Col className="mt-5 mb-3">
-          <h1>Psychologist Karolina Nowak</h1>
+          <h1>Dietician Karolina Nowak</h1>
         </Col>
       </Row>
       <Row xs={12}>

@@ -51,14 +51,10 @@ function Confirmation() {
       const updatedData = await changingConfirmationOfTheVisit(id);
       setConfirmationData(updatedData);
       console.log(updatedData);
-      navigate('/thankyou');
+      navigate('/thankyou', {state: {formData: confirmationData }});
     } catch (error) {
       console.log(error);
     }
-    // change confirmation to true +
-    // navigate to thankyou +
-    // delete the date from the calendar - todo
-    //send email to user - todo
   }
 
   const {
@@ -77,7 +73,7 @@ function Confirmation() {
     <Container>
       <Row xs={12} className="mb-5 mt-3">
         <Col>
-          <h1>Psychologist Karolina Nowak</h1>
+          <h1>Dietician Karolina Nowak</h1>
         </Col>
       </Row>
       <Row>
