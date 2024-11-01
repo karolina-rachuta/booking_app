@@ -1,140 +1,45 @@
 # Booking App
+This Booking Application allows you to schedule an appointment at a dietitian's office. You can choose between an online or in-person consultation (stationary consultation), select a preferred date and time, and filter available dates based on your chosen start date. Next, simply fill in your details and accept the terms. Finally, you can confirm your booking, go back to make changes, or cancel the appointment as needed.
 
 ## Tech Stack:
 
+- React
 - React router
-- Formik (formularz)
-- React Bootstrap
-- JSON server (do zabawy, nie do produkcji)
-- convert dates
-- CRUD
+- React Bootstrap, Bootstrap
+- JSON server
+- CRUD, fetch
 
-### Setup / boilerplate
+## How to run:
+- `git clone git@github.com:karolina-rachuta/booking_app.git`
+- `npm install`
+- `npm start`
+- `npm run json-server`
 
-- react router
+## Demo:
 
-```js
-npm install react-router-dom@6
-```
+- choose type of visit
+![screenshot](./src/images/demo/start.png)
 
-- test the snippet
+- choose day and time (use option to filter dates)
+![screenshot](./src/images/demo/schedule.png)
 
-  ```js
-  <div>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<div>Home</div>} />
-        <Route path="/book" element={<div>Book</div>} />
-      </Routes>
-    </BrowserRouter>
-  </div>
-  ```
+- click on the choosen time
+![screenshot](./src/images/demo/schedule_hour.png)
 
-- json server + komunikacja
+- fill the form
+![screenshot](./src/images/demo/form.png)
 
-```js
-npm install json-server
-```
+- after filling the form click next, or go back to the booking view
+![screenshot](./src/images/demo/form_filled.png)
 
-- add script in package.json (and changing port to 3004):
-  "json-server": "json-server --watch ./backend_api/api.json --port 3004"
-- adding folder and file db.json (endpoint posts, comments, profile)
+- here is confirmation with all the necessary details, you can go back to the form
+![screenshot](./src/images/demo/confirm_back.png)
 
-```json
-{
-  "posts": [
-    { "id": "1", "title": "a title", "views": 100 },
-    { "id": "2", "title": "another title", "views": 200 }
-  ],
-  "comments": [
-    { "id": "1", "text": "a comment about post 1", "postId": "1" },
-    { "id": "2", "text": "another comment about post 1", "postId": "1" }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
-}
-```
+- then screen with all the details you filled in will show
+![screenshot](./src/images/demo/form_filled_back.png)
 
-- bootstrap
+- or click to book the visit
+![screenshot](./src/images/demo/confirm_book.png)
 
-```js
-npm install react-bootstrap bootstrap
-```
-
-```js
-import "bootstrap/dist/css/bootstrap.min.css";
-
-function App() {
-  return (
-    <div>
-      <BrowserRouter>
-        <Routes>
-          <Route
-            path="/"
-            element={<Button variant="primary">Button as link</Button>}
-          />
-          <Route path="/book" element={<div>Book</div>} />
-        </Routes>
-      </BrowserRouter>
-    </div>
-  );
-}
-```
-
-## JSON server (was created databases for visits)
-
-- choose endpoint, tablica obiektów, w każdym obiekcie zawsze id
-- json type data: "2012-04-23T18:25:43.511Z"
-
-```json
-{
-  "visits": [
-    {
-      "id": "1",
-      "dates": ["hour", "hour"]
-    }
-  ]
-}
-```
-
-or
-
-```json
-{
-  "visits": [
-    {
-      "id": "1",
-      "16.11.2024": ["15:00", "16:00", "17:00"],
-      "data": "2024-11-23",
-      "avaiableHours": ["15:00", "16:00", "17:00"]
-    }
-  ]
-}
-```
-
-- canceled visit: confirmation false
-
-```json
- "confirmation": false
-```
-
-## Notatki
-
-1. Dodawanie zmiennych środowiskowych do scirpts
-
-- "scripts": {
-  "start": "PORT=3000 react-scripts start",
-  }
-
-2. Rest API opiera się na protokole HTTP i na status codes HTTP i endpointach
-
-- endpoints na high level w api.json
-- endpoints w liczbie mnogiej
-- pobieranie i zapisywanie danych na backend serverze
-- CRUD - get, post, put/patch, delete
-
-3. Current date (today)
-```ja
-const currentDate = newDate().toJSON().slice(0, 10); // 29/10/2024
-```
+- it is all done, your visit is booked
+![screenshot](./src/images/demo/thanks.png)
